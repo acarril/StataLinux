@@ -1,0 +1,13 @@
+[
+{
+    "id" : "StataLinux",
+    "caption" : "StataLinux",
+    "children":
+		[
+		{
+			"caption" : "Run",
+			"command" : "stata_linux"
+		}
+		]
+}
+]

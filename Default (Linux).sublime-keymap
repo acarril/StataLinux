@@ -1,0 +1,6 @@
+[
+{ 
+	"keys": ["control+shift+c"],
+	"command": "stata_linux"
+}
+]
