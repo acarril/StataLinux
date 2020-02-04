@@ -19,9 +19,10 @@ class StataLinuxCommand(sublime_plugin.TextCommand):
 		with open(tempfile, "w") as file:
 			file.write(content)
 		# Create and execute bash command:
-		cmd = "sh /home/alvaro/.config/sublime-text-3/Packages/StataLinux/sublime-stata.sh" + " " + '"' + tempfile + '"'
+		sublime_stata_sh_path = os.path.join(sublime.packages_path(), "StataLinux", "sublime-stata.sh")
+		cmd = "sh " + sublime_stata_sh_path + " " + '"' + tempfile + '"'
 		os.system(cmd)
 		# Remove temporary file:
 		os.remove(tempfile)
 		# Print status message for debugging:
-		# sublime.status_message("Content:%s" % lala)
+		# sublime.status_message("Content:%s" % sublime_stata_sh_path)
