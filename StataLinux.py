@@ -16,11 +16,13 @@ class StataLinuxCommand(sublime_plugin.TextCommand):
 		# Create and execute bash command:
 		sublime_stata_sh_path = os.path.join(sublime.packages_path(), "StataLinux", "sublime-stata.sh")
 		cmd = "sh " + sublime_stata_sh_path + " " + '"' + filename + '"'
-		subprocess.call(cmd, shell = True)
+		ret = subprocess.call(cmd, shell = True)
+		if ret != 0:
+			sublime.error_message("Bash script returned error code %s." % ret)
 		# Remove temporary file:
 		os.remove(filename)
 		# Print status message for debugging:
-		# sublime.status_message("Content:%s" % sublime_stata_sh_path)
+		# sublime.status_message("Content:%s" % sys.version)
 
 class StataLinuxAllCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
@@ -29,4 +31,7 @@ class StataLinuxAllCommand(sublime_plugin.TextCommand):
 		# Create and execute bash command:
 		sublime_stata_sh_path = os.path.join(sublime.packages_path(), "StataLinux", "sublime-stata.sh")
 		cmd = "sh " + sublime_stata_sh_path + " " + '"' + filename + '"'
-		subprocess.call(cmd, shell = True)
+		ret = subprocess.call(cmd, shell = True)
+		if ret != 0:
+			sublime.error_message("Bash script returned error code %s." % ret)
+		
