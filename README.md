@@ -6,7 +6,7 @@ Sublime Text 3 plugin that adds support for Stata (all versions).
 
 ## Background
 
-I needed a minimal and effective plugin for sending code from Sublime Text into Stata.
+I needed a minimal but effective plugin for sending code from Sublime Text into Stata.
 Since none of the plugins in the Package Control was specifically tailored for Linux, and none of the maintainers seem to want to add Linux support in the short run, I wrote my own.
 This plugin is originally based on [StataEnhanced](https://github.com/andrewheiss/SublimeStataEnhanced), and also on [these notes](https://github.com/cwitt2013/SublimeText_Stata_Linux).
 

@@ -1,4 +1,4 @@
 [
-{ "keys": ["control+d"], "command": "stata_linux" },
-{ "keys": ["control+shift+d"], "command": "stata_linux_all" }
+{ "keys": ["ctrl+d"], "command": "stata_linux" },
+{ "keys": ["ctrl+shift+d"], "command": "stata_linux_all" }
 ]
