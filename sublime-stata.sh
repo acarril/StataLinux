@@ -26,7 +26,7 @@ winid_stata=$(xdotool search --name "Stata/MP 15.1")
 
 # Current method doesn't switch window:
 # xdotool type --window 48234499 ${string} # xdotool type is slow AF
-xdotool key --window ${winid_stata} --delay 50 ctrl+v Return
+xdotool key --window ${winid_stata} --delay 50 ctrl+a ctrl+v Return
 
 # sleep .1
 
