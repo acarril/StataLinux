@@ -4,36 +4,27 @@ import os
 
 class StataLinuxCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
-		# Current file info:
-		filepath = os.path.split(self.view.file_name())[0]
-		# Determine if content is selection and select region accordingly:
-		is_selection = len(self.view.sel()[0]) > 0
-		if is_selection:
-			region = self.view.sel()[0]
-			region = self.view.line(region)	# expand selection to entire lines
-		else:
-			region = self.view.line(self.view.sel()[0])
+		# Collect selected line(s) or current line if none selected:
+		region = self.view.line(self.view.sel()[0])
 		content = self.view.substr(region)
-		# Create temporary file with content to be run
-		tempfile = os.path.join(filepath, "tempfile.do")
-		with open(tempfile, "w") as file:
+		# Create temporary file with content to be run:
+		filepath = os.path.split(self.view.file_name())[0]
+		filename = os.path.join(filepath, "tempfile.do")
+		with open(filename, "w") as file:
 			file.write(content)
 		# Create and execute bash command:
 		sublime_stata_sh_path = os.path.join(sublime.packages_path(), "StataLinux", "sublime-stata.sh")
-		cmd = "sh " + sublime_stata_sh_path + " " + '"' + tempfile + '"'
+		cmd = "sh " + sublime_stata_sh_path + " " + '"' + filename + '"'
 		os.system(cmd)
 		# Remove temporary file:
-		os.remove(tempfile)
+		os.remove(filename)
 		# Print status message for debugging:
 		# sublime.status_message("Content:%s" % sublime_stata_sh_path)
 
 class StataLinuxAllCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
-		# Current file info:
+		# Define current file as the one to be run:
 		filename = self.view.file_name()
-		# Use all content:
-		region = sublime.Region(0, self.view.size())
-		content = self.view.substr(region)
 		# Create and execute bash command:
 		sublime_stata_sh_path = os.path.join(sublime.packages_path(), "StataLinux", "sublime-stata.sh")
 		cmd = "sh " + sublime_stata_sh_path + " " + '"' + filename + '"'
