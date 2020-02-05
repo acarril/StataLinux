@@ -1,6 +1,7 @@
 import sublime
 import sublime_plugin
-import os
+import subprocess
+from os import remove
 
 class StataLinuxCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
@@ -15,7 +16,7 @@ class StataLinuxCommand(sublime_plugin.TextCommand):
 		# Create and execute bash command:
 		sublime_stata_sh_path = os.path.join(sublime.packages_path(), "StataLinux", "sublime-stata.sh")
 		cmd = "sh " + sublime_stata_sh_path + " " + '"' + filename + '"'
-		os.system(cmd)
+		subprocess.call(cmd, shell = True)
 		# Remove temporary file:
 		os.remove(filename)
 		# Print status message for debugging:
@@ -28,4 +29,4 @@ class StataLinuxAllCommand(sublime_plugin.TextCommand):
 		# Create and execute bash command:
 		sublime_stata_sh_path = os.path.join(sublime.packages_path(), "StataLinux", "sublime-stata.sh")
 		cmd = "sh " + sublime_stata_sh_path + " " + '"' + filename + '"'
-		os.system(cmd)
+		subprocess.call(cmd, shell = True)
