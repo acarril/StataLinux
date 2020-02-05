@@ -2,6 +2,8 @@
 
 Sublime Text 3 plugin that adds support for Stata (all versions).
 
+![screencast_functions.gif](/screencast_functions.gif "StataLinux in action!")
+
 ## Background
 
 I needed a minimal and effective plugin for sending code from Sublime Text into Stata.
