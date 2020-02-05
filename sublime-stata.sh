@@ -7,7 +7,7 @@ echo "${string}" | xclip -selection clipboard
 
 # Get relevant windows' IDs
 # winid=$(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}')
-winid_stata=$(xdotool search --name "Stata/MP 15.1")
+winid_stata=$(xdotool search --maxdepth 1 --name "Stata/MP 15.1")
 
 # swich to command line and select existing text via ctrl-a and paste clipboard
 # Note: there is an issue with xdotool's clearmodifiers option (see https://github.com/jordansissel/xdotool/issues/43)
