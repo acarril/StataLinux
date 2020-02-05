@@ -1,6 +1,6 @@
 [
 { 
-	"keys": ["control+shift+c"],
+	"keys": ["control+shift+d"],
 	"command": "stata_linux"
 }
 ]
