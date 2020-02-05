@@ -11,6 +11,7 @@ class StataLinuxCommand(sublime_plugin.TextCommand):
 		is_selection = len(self.view.sel()[0]) > 0
 		if is_selection:
 			region = self.view.sel()[0]
+			region = self.view.line(region)	# expand selection to entire lines
 		else:
 			region = sublime.Region(0, self.view.size())
 		content = self.view.substr(region)
