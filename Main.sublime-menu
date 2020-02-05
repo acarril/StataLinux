@@ -1,13 +1,25 @@
 [
 {
-    "id" : "StataLinux",
-    "caption" : "StataLinux",
-    "children":
+	"id" : "tools",
+	"children":
+	[
+	{
+		"id" : "packages",
+		"children":
 		[
-		{
-			"caption" : "Run",
-			"command" : "stata_linux"
-		}
+			{
+			"id" : "StataLinux",
+			"caption" : "StataLinux",
+			"children":
+				[
+				{
+					"caption" : "Run selection/all",
+					"command" : "stata_linux"
+				}
+				]
+			}
 		]
+	}
+	]
 }
 ]
