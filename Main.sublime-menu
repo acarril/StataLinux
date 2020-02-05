@@ -13,8 +13,12 @@
 			"children":
 				[
 				{
-					"caption" : "Run selection/all",
+					"caption" : "Run line/selection",
 					"command" : "stata_linux"
+				},
+				{
+					"caption" : "Run all",
+					"command" : "stata_linux_all"
 				}
 				]
 			}
