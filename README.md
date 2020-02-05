@@ -1,5 +1,12 @@
 # StataLinux
-Sublime Text 3 plugin that adds support for Stata 13-16.
+
+Sublime Text 3 plugin that adds support for Stata (all versions).
+
+## Background
+
+I needed a minimal and effective plugin for sending code from Sublime Text into Stata.
+Since none of the plugins in the Package Control was specifically tailored for Linux, and none of the maintainers seem to want to add Linux support in the short run, I wrote my own.
+This plugin is originally based on [StataEnhanced](https://github.com/andrewheiss/SublimeStataEnhanced), and also on [these notes](https://github.com/cwitt2013/SublimeText_Stata_Linux).
 
 ## Dependencies
 
@@ -11,9 +18,20 @@ Sublime Text 3 plugin that adds support for Stata 13-16.
 There are two ways to install this plugin:
 
 1. Search for "StataLinux" on Package Control, or
-2. Copy/clone the entire plugin folder to `~/.config/sublime-text-3/Packages/`.
+2. Copy/clone the entire plugin folder (this repository) to `~/.config/sublime-text-3/Packages/`.
 
 Make sure you have installed the [dependencies](#dependencies) listed above before using it.
+
+## Usage
+
+Make sure you have one instance of Stata open.
+Open a `.do` (or `.ado`) file in ST3.
+You have two keybindings for executing code:
+1. `ctrl+d` executes the current line, or the selected lines if a selection is made, and
+2. `crtl+shift+d` executes the entire file.
+
+These actions may also be called using the Command Palette: after invoking it with `ctrl+shit+p`, type "StataLinux" and select an action.
+Additionally, these actions are accesible in the main menu under `Tools > Packages > StataLinux`.
 
 ## Known issues
 
