@@ -15,6 +15,30 @@ This plugin is originally based on [StataEnhanced](https://github.com/andrewheis
 - `xdotool`
 - `xclip`
 
+These packages are likely already in your system.
+You can check their presence by typing each name with the `--version` option in your terminal.
+For example,
+```bash
+xdotool --version
+```
+If the output is something like `xdotool version 3.20160805.1`, then it's installed.
+If you get an error, then the package is not installed.
+Use your system's package manager to install them.
+For example,
+
+### Arch(-based)
+```bash
+sudo pacman -S xclip xdotool
+```
+
+### Ubuntu(-based)
+```bash
+sudo apt install xclip xdotool
+```
+etc.
+
+
+
 ## Installation
 
 There are two ways to install this plugin:
