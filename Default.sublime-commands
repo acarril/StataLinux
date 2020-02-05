@@ -1,0 +1,10 @@
+[
+    {
+        "caption": "StataLinux: Run line/selection",
+        "command": "stata_linux"
+    },
+    {
+        "caption": "StataLinux: Run all",
+        "command": "stata_linux_all"
+    }
+]
