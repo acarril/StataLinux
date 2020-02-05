@@ -11,7 +11,7 @@ winid_stata=$(xdotool search --name "Stata/MP 15.1")
 
 # swich to command line and select existing text via ctrl-a and paste clipboard
 # Note: there is an issue with xdotool's clearmodifiers option (see https://github.com/jordansissel/xdotool/issues/43)
-sleep .1
+# sleep .1
 
 # OG method:
 # xdotool key --clearmodifiers --delay 50 ctrl+a ctrl+v Return
@@ -28,7 +28,7 @@ sleep .1
 # xdotool type --window 48234499 ${string} # xdotool type is slow AF
 xdotool key --window ${winid_stata} --delay 50 ctrl+v Return
 
-sleep .1
+# sleep .1
 
 # if [ "$test" -eq "2" ]
 #   then
