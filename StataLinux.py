@@ -12,7 +12,7 @@ class StataLinuxCommand(sublime_plugin.TextCommand):
 			region = self.view.sel()[0]
 			region = self.view.line(region)	# expand selection to entire lines
 		else:
-			region = sublime.Region(0, self.view.size())
+			region = self.view.line(self.view.sel()[0])
 		content = self.view.substr(region)
 		# Create temporary file with content to be run
 		tempfile = os.path.join(filepath, "tempfile.do")
