@@ -1,4 +1,19 @@
 [
 	{ "keys": ["ctrl+alt+d"], "command": "stata_linux" },
-	{ "keys": ["ctrl+alt+shift+d"], "command": "stata_linux_all" }
+	{ "keys": ["ctrl+alt+shift+d"], "command": "stata_linux_all" },
+	{ "keys": ["`"], "command": "insert_snippet", "args": {"contents": "`$0'"}, "context":
+		[
+		{ "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+		{ "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+		{ "key": "eol_selector", "operator": "not_equal", "operand": "string.quoted.single", "match_all": true },
+		{ "key": "selector", "operator": "equal", "operand": "source.stata", "match_all": true }
+		]
+	},
+	{ "keys": ["`"], "command": "insert_snippet", "args": {"contents": "`${0:$SELECTION}'"}, "context":
+		[
+		{ "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+		{ "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true },
+		{ "key": "selector", "operator": "equal", "operand": "source.stata", "match_all": true }
+		]
+	}
 ]
