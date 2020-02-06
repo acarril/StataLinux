@@ -5,7 +5,7 @@ Sublime Text 3 plugin that adds basic support for Stata (all versions) in Linux.
 - Commands for sending a selection of lines or the whole file to Stata.
 See [usage](#usage) for more details. 
 
-![screencast_functions.gif](/screencast_functions.gif "StataLinux in action!")
+![screencast_functions.gif](/img/screencast_functions.gif "StataLinux in action!")
 
 ## Background
 
