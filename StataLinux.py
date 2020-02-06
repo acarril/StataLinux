@@ -24,7 +24,7 @@ class StataLinuxCommand(sublime_plugin.TextCommand):
 			else:
 				sublime.error_message("Bash script returned error code %s." % ret)
 		# Remove temporary file:
-		os.remove(filename)
+		remove(filename)
 		# Print status message for debugging:
 		# sublime.status_message("Content:%s" % sys.version)
 
