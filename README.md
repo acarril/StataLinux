@@ -1,14 +1,22 @@
 # StataLinux
 
-Sublime Text 3 plugin that adds support for Stata (all versions).
+Sublime Text 3 plugin that adds basic support for Stata (all versions) in Linux.
+- Language definitions for `do` and `ado` files
+- Commands for sending a selection of lines or the whole file to Stata.
+See [usage](#usage) for more details. 
 
 ![screencast_functions.gif](/screencast_functions.gif "StataLinux in action!")
 
 ## Background
 
-I needed a minimal but effective plugin for sending code from Sublime Text into Stata.
-Since none of the plugins in the Package Control was specifically tailored for Linux, and none of the maintainers seem to want to add Linux support in the short run, I wrote my own.
+I needed a minimal yet robust plugin for sending code from Sublime Text into Stata.
+Since none of the plugins in the Package Control was specifically tailored for Linux, and none of the maintainers seem to want to add Linux support to theirs, I wrote my own.
 This plugin is originally based on [StataEnhanced](https://github.com/andrewheiss/SublimeStataEnhanced), and also on [these notes](https://github.com/cwitt2013/SublimeText_Stata_Linux).
+
+This plugin aims for robustness over bells and whistles, and almost all the decisions were taking with that philosophy in mind.
+It basically creates a temporary file which is to be executed in Stata.
+The file is sent for execution by copying `do <filepath>` to the clipboard with `xclip`, and then pasting this string directly (and in the background) to Stata's command pane using `xdotool`.
+
 
 ## Dependencies
 
@@ -43,7 +51,7 @@ etc.
 
 There are two ways to install this plugin:
 
-1. Search for "StataLinux" on Package Control, or
+1. ~~Search for "StataLinux" on Package Control,~~ (*approval pending*) or
 2. Copy/clone the entire plugin folder (this repository) to `~/.config/sublime-text-3/Packages/`.
 
 Make sure you have installed the [dependencies](#dependencies) listed above before using it.
@@ -53,11 +61,20 @@ Make sure you have installed the [dependencies](#dependencies) listed above befo
 Make sure you have one instance of Stata open.
 Open a `.do` (or `.ado`) file in ST3.
 You have two keybindings for executing code:
-1. `ctrl+d` executes the current line, or the selected lines if a selection is made, and
-2. `crtl+shift+d` executes the entire file.
+1. `ctrl+alt+d` executes the current line, or the selected lines if a selection is made, and
+2. `crtl+alt+shift+d` executes the entire file.
 
 These actions may also be called using the Command Palette: after invoking it with `ctrl+shit+p`, type "StataLinux" and select an action.
-Additionally, these actions are accesible in the main menu under `Tools > Packages > StataLinux`.
+Additionally, these actions are accessible in the main menu under `Tools > Packages > StataLinux`.
+
+Note that if a line is only partially selected, the program will automatically select the whole line for execution.
+
+## Stata versions, flavors and instances
+
+Make sure you have an instance of Stata *with GUI* open (`xstata`, or its various flavors); this plugin doesn't work with Stata's CLI.
+No additional configuration needs to be added to indicate version or flavor, since the program will detect any running instance automatically.
+If you have more than one instance of Stata open, the plugin will default to choosing the most recently opened one (internally, it looks for the last entry of `xdotool search --classname "stata"`).
+
 
 ## Known issues
 
