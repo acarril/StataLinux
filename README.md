@@ -69,6 +69,18 @@ Additionally, these actions are accessible in the main menu under `Tools > Packa
 
 Note that if a line is only partially selected, the program will automatically select the whole line for execution.
 
+## Other features
+
+### Comments
+
+Comment toggling for entire lines works with the default ST3 keybinding, `ctrl+\`.
+
+### Locals
+
+Typing a backtick `` ` `` anywhere in the code will immediately put a closing tick after it, with the cursor inside.
+Typing a backtick with a `word` selected will yield `` `word' ``.
+
+
 ## Stata versions, flavors and instances
 
 Make sure you have an instance of Stata *with GUI* open (`xstata`, or its various flavors); this plugin doesn't work with Stata's CLI.
