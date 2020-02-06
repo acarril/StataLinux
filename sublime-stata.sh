@@ -15,4 +15,5 @@ if [ ! -z "$winid_stata" ]; then
 	xdotool key --window ${winid_stata} --delay 50 ctrl+a ctrl+v Return # Current method doesn't switch window:
 else
 	echo "No Stata window open."
+	exit 1
 fi
