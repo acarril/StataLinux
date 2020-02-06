@@ -13,7 +13,7 @@ I needed a minimal yet robust plugin for sending code from Sublime Text into Sta
 Since none of the plugins in the Package Control was specifically tailored for Linux, and none of the maintainers seem to want to add Linux support to theirs, I wrote my own.
 This plugin is originally based on [StataEnhanced](https://github.com/andrewheiss/SublimeStataEnhanced), and also on [these notes](https://github.com/cwitt2013/SublimeText_Stata_Linux).
 
-This plugin aims for robustness over bells and whistles, and almost all the decisions were taking with that philosophy in mind.
+This plugin aims for robustness over bells and whistles, and almost all the decisions were taken with that philosophy in mind.
 It basically creates a temporary file which is to be executed in Stata.
 The file is sent for execution by copying `do <filepath>` to the clipboard with `xclip`, and then pasting this string directly (and in the background) to Stata's command pane using `xdotool`.
 
