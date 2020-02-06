@@ -51,7 +51,7 @@ etc.
 
 There are two ways to install this plugin:
 
-1. ~~Search for "StataLinux" on Package Control,~~ (*approval pending*) or
+1. ~~Search for "StataLinux" on Package Control,~~ ([*approval pending*](https://github.com/wbond/package_control_channel/pull/7817)) or
 2. Copy/clone the entire plugin folder (this repository) to `~/.config/sublime-text-3/Packages/`.
 
 Make sure you have installed the [dependencies](#dependencies) listed above before using it.
