@@ -62,6 +62,7 @@ Make sure you have installed the [dependencies](#dependencies) listed above befo
 Make sure you have one instance of Stata open.
 Open a `.do` (or `.ado`) file in ST3.
 You have two keybindings for executing code:
+
 1. `ctrl+alt+d` executes the current line, or the selected lines if a selection is made, and
 2. `crtl+alt+shift+d` executes the entire file.
 
@@ -76,14 +77,14 @@ Note that if a line is only partially selected, the program will automatically s
 
 Comment toggling for entire lines works with the default ST3 keybinding, `ctrl+\`.
 
-![comments_basic.gif](/img/comments_basic.gif "Comments in action!")
+![comments_basic.gif](https://raw.githubusercontent.com/acarril/StataLinux/master/img/comments_basic.gif "Comments in action!")
 
 ### Locals
 
 Typing a backtick `` ` `` anywhere in the code will immediately put a closing tick after it, with the cursor inside.
 Typing a backtick with a `word` selected will yield `` `word' ``.
 
-![locals.gif](/img/locals.gif "Locals in action!")
+![locals.gif](https://raw.githubusercontent.com/acarril/StataLinux/master/img/locals.gif "Locals in action!")
 
 ## Stata versions, flavors and instances
 
