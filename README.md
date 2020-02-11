@@ -1,6 +1,7 @@
 # StataLinux
 
 Sublime Text 3 plugin that adds basic support for Stata (all versions) in Linux.
+
 - Language definitions for `do` and `ado` files
 - Commands for sending a selection of lines or the whole file to Stata.
 See [usage](#usage) for more details. 
