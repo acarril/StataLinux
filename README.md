@@ -70,6 +70,8 @@ These actions may also be called using the Command Palette: after invoking it wi
 Additionally, these actions are accessible in the main menu under `Tools > Packages > StataLinux`.
 
 Note that if a line is only partially selected, the program will automatically select the whole line for execution.
+Also, when sending the whole file for execution, StataLinux will default to saving the current file first.
+This option can be disabled in the settings.
 
 ## Other features
 
