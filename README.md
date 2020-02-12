@@ -78,6 +78,7 @@ This option can be disabled in the settings.
 ### Comments
 
 Comment toggling for entire lines works with the default ST3 keybinding, `ctrl+\`.
+Arbitary blocks can be commented out with `ctrl+shift+\`.
 
 ![comments_basic.gif](https://raw.githubusercontent.com/acarril/StataLinux/master/img/comments_basic.gif "Comments in action!")
 
