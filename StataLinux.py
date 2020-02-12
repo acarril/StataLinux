@@ -4,8 +4,11 @@ import subprocess
 from os import remove
 from os import path
 
+settingsfile = "StataLinux.sublime-settings"
+
 class StataLinuxCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
+		settings = sublime.load_settings(settingsfile)
 		# Collect selected line(s) or current line if none selected:
 		region = self.view.line(self.view.sel()[0])
 		content = self.view.substr(region)
@@ -30,7 +33,11 @@ class StataLinuxCommand(sublime_plugin.TextCommand):
 
 class StataLinuxAllCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
-		# Define current file as the one to be run:
+		settings = sublime.load_settings(settingsfile)
+		# Switch focus to Stata or not after sending a command depending on a setting
+		if settings.get('save_before_run_all'):
+			self.view.run_command("save")
+		# Define current file as the one to be run, saving it first
 		filename = self.view.file_name()
 		# Create and execute bash command:
 		sublime_stata_sh_path = path.join(sublime.packages_path(), "StataLinux", "sublime-stata.sh")
