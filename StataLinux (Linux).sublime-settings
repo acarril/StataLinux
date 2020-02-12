@@ -1,0 +1,4 @@
+{
+	// Autmatically save current file before "Send All" command
+	"save_before_run_all": true
+}
