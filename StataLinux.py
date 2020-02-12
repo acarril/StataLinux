@@ -29,7 +29,7 @@ class StataLinuxCommand(sublime_plugin.TextCommand):
 		# Remove temporary file:
 		remove(filename)
 		# Print status message for debugging:
-		# sublime.status_message("Content:%s" % sys.version)
+		# sublime.status_message("Content:%s" % content)
 
 class StataLinuxAllCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
