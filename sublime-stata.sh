@@ -5,8 +5,8 @@
 string='do ''"'$1'"'
 echo "${string}" | xclip -selection clipboard
 
-# Get Stata window ID (latest oppened?)
-winid_stata=$(xdotool search --classname "stata" | tail -1)
+# Get Stata window ID (first window that matches the regex)
+winid_stata=$(xdotool search --name --limit 1 "Stata/(IC|SE|MP)? 1[0-9]\.[0-9]")
 
 # Send string to Stata's command pane, selecting previous text and copying on top
 # Note: there is an issue with xdotool's clearmodifiers option (see https://github.com/jordansissel/xdotool/issues/43)
