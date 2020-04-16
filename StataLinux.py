@@ -16,7 +16,7 @@ class StataLinuxCommand(sublime_plugin.TextCommand):
 		filepath = path.split(self.view.file_name())[0]
 		filename = path.join(filepath, "tempfile.do")
 		with open(filename, "w") as file:
-			file.write(content)
+			file.write(content + "\n")
 		# Create and execute bash command:
 		sublime_stata_sh_path = path.join(sublime.packages_path(), "StataLinux", "sublime-stata.sh")
 		cmd = "sh " + sublime_stata_sh_path + " " + '"' + filename + '"'
