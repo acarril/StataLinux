@@ -1,4 +1,12 @@
 {
 	// Autmatically save current file before "Send All" command
-	"save_before_run_all": true
+	"save_before_run_all": true, 
+
+	// Always extracts whole line (true) or only exact selection (false).
+	// If nothing is selected then whole line under cursor is extracted.
+	"always_extract_full_line": true, 
+
+	// delete temporary file after sending it to stata. Defaults to false
+	// to follow similar to stata's default behaviour.
+	"remove_temp_file": false
 }

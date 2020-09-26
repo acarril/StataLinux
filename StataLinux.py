@@ -3,20 +3,32 @@ import sublime_plugin
 import subprocess
 from os import remove
 from os import path
+from tempfile import mkstemp
 
-settingsfile = "StataLinux.sublime-settings"
+settingsfile = "StataLinux (Linux).sublime-settings"
 
 class StataLinuxCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
+		# Load settings
 		settings = sublime.load_settings(settingsfile)
-		# Collect selected line(s) or current line if none selected:
-		region = self.view.line(self.view.sel()[0])
-		content = self.view.substr(region)
-		# Create temporary file with content to be run:
-		filepath = path.split(self.view.file_name())[0]
-		filename = path.join(filepath, "tempfile.do")
+		always_extract_full_line = settings.get('always_extract_full_line')
+		remove_temp_file = settings.get('remove_temp_file')
+		
+
+		# Collect selected range or full current line if no selection in a list 
+		contents = []
+		for region in self.view.sel():
+			# select full line if region starts and ends at the same point
+			if always_extract_full_line or region.a == region.b:
+				region = self.view.full_line(region)
+			contents.append(self.view.substr(region))
+
+		# write contents into a temporary file
+		fd, filename = mkstemp(prefix="StataLinux_", suffix=".do")
 		with open(filename, "w") as file:
-			file.write(content + "\n")
+			for content in contents:
+				file.write(content + "\n")
+
 		# Create and execute bash command:
 		sublime_stata_sh_path = path.join(sublime.packages_path(), "StataLinux", "sublime-stata.sh")
 		cmd = "sh " + sublime_stata_sh_path + " " + '"' + filename + '"'
@@ -26,10 +38,13 @@ class StataLinuxCommand(sublime_plugin.TextCommand):
 				sublime.error_message("Bash script returned error code %s.\nIt seems Stata is not running." % ret)
 			else:
 				sublime.error_message("Bash script returned error code %s." % ret)
+
 		# Remove temporary file:
-		remove(filename)
+		if remove_temp_file: remove(filename)
 		# Print status message for debugging:
 		# sublime.status_message("Content:%s" % content)
+		sublime.status_message('StataLinuxCommand ran successfully')
+
 
 class StataLinuxAllCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
@@ -49,3 +64,4 @@ class StataLinuxAllCommand(sublime_plugin.TextCommand):
 			else:
 				sublime.error_message("Bash script returned error code %s." % ret)
 		
+

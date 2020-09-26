@@ -1,10 +1,15 @@
-[
+[	
+	// send line or selection to stata
 	{ "keys": ["ctrl+alt+d"], "command": "stata_linux", "context":
 		[{ "key": "selector", "operator": "equal", "operand": "source.stata", "match_all": true }]
 	},
+	
+	// send whole file to stata
 	{ "keys": ["ctrl+alt+shift+d"], "command": "stata_linux_all", "context":
 		[{ "key": "selector", "operator": "equal", "operand": "source.stata", "match_all": true }]
 	},
+
+	// local snippets
 	{ "keys": ["`"], "command": "insert_snippet", "args": {"contents": "`$0'"}, "context":
 		[
 		{ "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
