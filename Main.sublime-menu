@@ -1,29 +1,50 @@
 [
-{
-	"id" : "tools",
-	"children":
-	[
 	{
-		"id" : "packages",
+		"caption": "Preferences",
+		"mnemonic": "n",
+		"id": "preferences",
 		"children":
 		[
 			{
-			"id" : "StataLinux",
-			"caption" : "StataLinux",
-			"children":
+				"caption": "Package Settings",
+				"mnemonic": "P",
+				"id": "package-settings",
+				"children":
 				[
-				{
-					"caption" : "Run line/selection",
-					"command" : "stata_linux"
-				},
-				{
-					"caption" : "Run all",
-					"command" : "stata_linux_all"
-				}
+					{
+						"caption": "StataLinux",
+						"children": [
+							{
+								"caption": "Settings",
+								"command": "edit_settings",
+								"args":
+								{
+									"base_file": "${packages}/StataLinux/StataLinux (Linux).sublime-settings",
+									"default": "{\n\t$0\n}\n"
+								}
+							},
+							{
+								"caption": "Key Bindings",
+								"command": "edit_settings",
+								"args":
+								{
+									"base_file": "${packages}/StataLinux/Default (Linux).sublime-keymap",
+									"default": "{\n\t$0\n}\n"
+								}
+							},
+							{ "caption": "-" },
+							{ 
+								"caption" : "Run line/selection",
+								"command" : "stata_linux"
+							},
+							{
+								"caption" : "Run all",
+								"command" : "stata_linux_all"
+							}
+						]
+					}
 				]
 			}
 		]
 	}
-	]
-}
 ]
