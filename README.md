@@ -15,16 +15,13 @@ Since none of the plugins in the Package Control was specifically tailored for L
 This plugin is originally based on [StataEnhanced](https://github.com/andrewheiss/SublimeStataEnhanced), and also on [these notes](https://github.com/cwitt2013/SublimeText_Stata_Linux).
 
 This plugin aims for robustness over bells and whistles, and almost all the decisions were taken with that philosophy in mind.
-It basically creates a temporary file which is to be executed in Stata.
-The file is sent for execution by copying `do <filepath>` to the clipboard with `xclip`, and then pasting this string directly (and in the background) to Stata's command pane using `xdotool`.
+It basically creates a temporary file with either the currently selected lines or the entire do-file to be executed in Stata. In the background `xdotool` is used to call the temporary file from the command pane in Stata. 
 
-
-## Dependencies
+## Dependency
 
 - `xdotool`
-- `xclip`
 
-These packages are likely already in your system.
+This package is likely already in your system.
 You can check their presence by typing each name with the `--version` option in your terminal.
 For example,
 ```bash
@@ -37,12 +34,12 @@ For example,
 
 ### Arch(-based)
 ```bash
-sudo pacman -S xclip xdotool
+sudo pacman -S xdotool
 ```
 
 ### Ubuntu(-based)
 ```bash
-sudo apt install xclip xdotool
+sudo apt install xdotool
 ```
 etc.
 
@@ -55,7 +52,7 @@ There are two ways to install this plugin:
 1. Search for "StataLinux" on Package Control, or
 2. Copy/clone the entire plugin folder (this repository) to `~/.config/sublime-text-3/Packages/`.
 
-Make sure you have installed the [dependencies](#dependencies) listed above before using it.
+Make sure you have installed the [dependency](#dependency) listed above before using it.
 
 ## Usage
 
