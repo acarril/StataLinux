@@ -66,9 +66,15 @@ You have two keybindings for executing code:
 These actions may also be called using the Command Palette: after invoking it with `ctrl+shit+p`, type "StataLinux" and select an action.
 Additionally, these actions are accessible in the main menu under `Tools > Packages > StataLinux`.
 
-Note that if a line is only partially selected, the program will automatically select the whole line for execution.
-Also, when sending the whole file for execution, StataLinux will default to saving the current file first.
-This option can be disabled in the settings.
+The default keybinding can be changed by including the following in your `sublime-keymap` file. This file can be viewed and edited by clicking on `Key Bindings` under `Preferences > Package Settings > Stata Linux`. Here is a example using `ctrl`+`enter` to run selected lines: 
+
+```
+    // StataLinux
+    { "keys": ["ctrl+enter"], "command": "stata_linux", "context":
+        [{ "key": "selector", "operator": "equal", "operand": "source.stata", "match_all": true }]
+```
+
+The `stata_linux_all` command, which runs the entire file can be also adjusted accordingly. 
 
 ## Other features
 
@@ -86,11 +92,21 @@ Typing a backtick with a `word` selected will yield `` `word' ``.
 
 ![locals.gif](https://raw.githubusercontent.com/acarril/StataLinux/master/img/locals.gif "Locals in action!")
 
+### Options 
+
+The following options be found in the main menu under `Preferences > Package Settings > StataLinux > Settings`. 
+    
+- `save_before_run_all` (default = true): Automatically saves the current file before "Send All" command.
+
+- `always_extract_full_line` (default = true): Always extracts whole line (true) or only exact selection (false). If nothing is selected then whole line under cursor is extracted. The default behavior mimics Stata's for familiarity but there are situations where running a partial line might save some time, so setting it to `false` allows you to quickly run a command with and then without an `if` condition or a `by` statement.  If the current selection is empty, this plugin will run the whole line and **not** the whole do-file. Although this is different to Stata's default behavior, we don't think it was a good design choice and one can always explicitly use `Run all` functionality in such cases.
+
+- `remove_temp_file` (default: false): Deletes the temporary file after running it.
+
 ## Stata versions, flavors and instances
 
 Make sure you have an instance of Stata *with GUI* open (`xstata`, or its various flavors); this plugin doesn't work with Stata's CLI.
 No additional configuration needs to be added to indicate version or flavor, since the program will detect any running instance automatically.
-If you have more than one instance of Stata open, the plugin will default to choosing the most recently opened one (internally, it looks for the last entry of `xdotool search --classname "stata"`).
+If you have more than one instance of Stata open, the plugin will default to choosing the most recently opened one (internally, it looks for the result of `xdotool search --name --limit 1 "Stata/(IC|SE|MP)? 1[0-9]\.[0-9]"`).
 
 
 ## Known issues
