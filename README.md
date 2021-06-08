@@ -15,16 +15,13 @@ Since none of the plugins in the Package Control was specifically tailored for L
 This plugin is originally based on [StataEnhanced](https://github.com/andrewheiss/SublimeStataEnhanced), and also on [these notes](https://github.com/cwitt2013/SublimeText_Stata_Linux).
 
 This plugin aims for robustness over bells and whistles, and almost all the decisions were taken with that philosophy in mind.
-It basically creates a temporary file which is to be executed in Stata.
-The file is sent for execution by copying `do <filepath>` to the clipboard with `xclip`, and then pasting this string directly (and in the background) to Stata's command pane using `xdotool`.
+It basically creates a temporary file with either the currently selected lines or the entire do-file to be executed in Stata. In the background `xdotool` is used to call the temporary file from the command pane in Stata. 
 
-
-## Dependencies
+## Dependency
 
 - `xdotool`
-- `xclip`
 
-These packages are likely already in your system.
+This package is likely already in your system.
 You can check their presence by typing each name with the `--version` option in your terminal.
 For example,
 ```bash
@@ -37,12 +34,12 @@ For example,
 
 ### Arch(-based)
 ```bash
-sudo pacman -S xclip xdotool
+sudo pacman -S xdotool
 ```
 
 ### Ubuntu(-based)
 ```bash
-sudo apt install xclip xdotool
+sudo apt install xdotool
 ```
 etc.
 
@@ -55,7 +52,7 @@ There are two ways to install this plugin:
 1. Search for "StataLinux" on Package Control, or
 2. Copy/clone the entire plugin folder (this repository) to `~/.config/sublime-text-3/Packages/`.
 
-Make sure you have installed the [dependencies](#dependencies) listed above before using it.
+Make sure you have installed the [dependency](#dependency) listed above before using it.
 
 ## Usage
 
@@ -69,9 +66,15 @@ You have two keybindings for executing code:
 These actions may also be called using the Command Palette: after invoking it with `ctrl+shit+p`, type "StataLinux" and select an action.
 Additionally, these actions are accessible in the main menu under `Tools > Packages > StataLinux`.
 
-Note that if a line is only partially selected, the program will automatically select the whole line for execution.
-Also, when sending the whole file for execution, StataLinux will default to saving the current file first.
-This option can be disabled in the settings.
+The default keybinding can be changed by including the following in your `sublime-keymap` file. This file can be viewed and edited by clicking on `Key Bindings` under `Preferences > Package Settings > Stata Linux`. Here is a example using `ctrl`+`enter` to run selected lines: 
+
+```
+    // StataLinux
+    { "keys": ["ctrl+enter"], "command": "stata_linux", "context":
+        [{ "key": "selector", "operator": "equal", "operand": "source.stata", "match_all": true }]
+```
+
+The `stata_linux_all` command, which runs the entire file can be also adjusted accordingly. 
 
 ## Other features
 
@@ -89,11 +92,21 @@ Typing a backtick with a `word` selected will yield `` `word' ``.
 
 ![locals.gif](https://raw.githubusercontent.com/acarril/StataLinux/master/img/locals.gif "Locals in action!")
 
+### Options 
+
+The following options be found in the main menu under `Preferences > Package Settings > StataLinux > Settings`. 
+    
+- `save_before_run_all` (default = true): Automatically saves the current file before "Send All" command.
+
+- `always_extract_full_line` (default = true): Always extracts whole line (true) or only exact selection (false). If nothing is selected then whole line under cursor is extracted. The default behavior mimics Stata's for familiarity but there are situations where running a partial line might save some time, so setting it to `false` allows you to quickly run a command with and then without an `if` condition or a `by` statement.  If the current selection is empty, this plugin will run the whole line and **not** the whole do-file. Although this is different to Stata's default behavior, we don't think it was a good design choice and one can always explicitly use `Run all` functionality in such cases.
+
+- `remove_temp_file` (default: false): Deletes the temporary file after running it.
+
 ## Stata versions, flavors and instances
 
 Make sure you have an instance of Stata *with GUI* open (`xstata`, or its various flavors); this plugin doesn't work with Stata's CLI.
 No additional configuration needs to be added to indicate version or flavor, since the program will detect any running instance automatically.
-If you have more than one instance of Stata open, the plugin will default to choosing the most recently opened one (internally, it looks for the last entry of `xdotool search --classname "stata"`).
+If you have more than one instance of Stata open, the plugin will default to choosing the most recently opened one (internally, it looks for the result of `xdotool search --name --limit 1 "Stata/(IC|SE|MP)? 1[0-9]\.[0-9]"`).
 
 
 ## Known issues
